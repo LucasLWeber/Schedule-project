@@ -54,7 +54,7 @@
 
                                         <x-dropdown-link :href="route('logout')"
                                                          onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                                            this.closest('form').submit();">
                                             {{ __('Log Out') }}
                                         </x-dropdown-link>
                                     </form>
@@ -88,6 +88,7 @@
     <footer class="mt-6 text-center text-sm text-black dark:text-white/70 fixed bottom-0 left-0 right-0 bg-slate-50 dark:bg-gray-800 p-4">
         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
     </footer>
+
     @livewireScripts
 </body>
 

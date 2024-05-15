@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,7 @@ class ScheduleFactory extends Factory
     public function definition(): array
     {
         return [
-            'schedule_time' => $this->faker->dateTimeBetween('-1 year', '+1 year')->format('Y-m-d H:i:s'),
+            'schedule_time' => Carbon::create(2024, date('m'), date('d'), $this->faker->numberBetween(8, 18), 0, 0, 0),
             'status' => true
         ];
     }

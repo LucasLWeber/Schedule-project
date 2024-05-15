@@ -32,6 +32,7 @@
         @for($hour = 8; $hour < 19; $hour++)
             @if($hour !== 12)
                 <button
+                    wire:click="getScheduleHour({{ $hour }})"
                     class="cursor-pointer p-2 bg-gray-100 hover:bg-gray-200 focus:bg-green-500 flex flex-col justify-center items-center rounded-md"
                 >{{ $hour }}:00
                 </button>
@@ -61,10 +62,10 @@
         <button
             class="mt-8 bg-red-500 py-2 px-4 rounded-md hover:bg-red-600"
             type="button"
-            value="Exclude"
-            wire:click="exclude"
+            value="Delete"
+            wire:click="delete"
         >
-            Exclude
+            Delete
         </button>
     </div>
 

@@ -2,13 +2,16 @@
 
 namespace App\Livewire;
 
+use App\Actions\ScheduleCrudAction;
 use Livewire\Component;
 
 class Schedule extends Component
 {
+
     public int $lastDay;
     public int $day;
     public int $month;
+    public int $scheduleHour;
 
     public function updatedMonth(): void
     {
@@ -18,6 +21,21 @@ class Schedule extends Component
 
     public function getMonth(){
         $this->updatedMonth();
+    }
+
+    public function getScheduleHour(int $hour): int
+    {
+        return $this->scheduleHour = $hour;
+    }
+
+    public function save(): void
+    {
+        ScheduleCrudAction::save($this->month, $this->day, $this->scheduleHour);
+    }
+
+    public function delete(): void
+    {
+        ScheduleCrudAction::delete($this->month, $this->day, $this->scheduleHour);
     }
     public function mount()
     {

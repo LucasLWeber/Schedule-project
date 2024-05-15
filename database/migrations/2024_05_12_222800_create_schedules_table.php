@@ -17,7 +17,6 @@ return new class extends Migration
             $table->dateTime('schedule_time')->unique();
             $table->boolean('status');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
