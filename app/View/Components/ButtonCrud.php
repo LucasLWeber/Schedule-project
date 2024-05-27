@@ -11,11 +11,13 @@ class ButtonCrud extends Component
 
     public string $text;
     public string $handle;
+    public string $color;
 
-    public function __construct(string $text, string $handle)
+    public function __construct(string $text, string $handle, string $color)
     {
         $this->text = $text;
         $this->handle = $handle;
+        $this->color = $color;
     }
 
     public function getBackgroundClass(): string
@@ -33,6 +35,6 @@ class ButtonCrud extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.button-crud');
+        return view('components.button-crud', ['backgroundClass' => $this->getBackgroundClass()]);
     }
 }

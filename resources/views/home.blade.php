@@ -6,11 +6,13 @@
     <title>{{ env('APP_NAME')  }}</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
 
 <body class="font-sans antialiased dark:bg-black dark:text-white/50 box-border">
+    @stack('scripts')
     <div class="h-full lg:w-1/2 mx-auto bg-gray-50 text-black/50 dark:bg-black dark:text-white/50 bg-slate-50 p-4">
         <header class="flex flex-row justify-between items-center">
             <div class="hidden sm:block flex lg:justify-center lg:col-start-2">

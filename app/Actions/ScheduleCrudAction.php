@@ -12,11 +12,14 @@ use Illuminate\Support\Facades\Mail;
 class ScheduleCrudAction
 {
 
-    public static function save(int $month, int $day, int $hour): void
+    public static function save(int $month, int $day, int $hour): array
     {
         if(!Auth::user()){
             redirect('/login');
-            return;
+            return [
+                'status' => false,
+                'message' => 'fail'
+            ];
         }
 
 
@@ -34,13 +37,20 @@ class ScheduleCrudAction
 
         Mail::to(Auth::user()->email)->send(new ScheduleConfirmedMail($schedule));
 
+        return [
+            'status' => true,
+            'message' => "Your schedule was saved successfully. An email was sent to {$schedule->user->email} to remember you!",
+        ];
     }
 
-    public static function delete(int $month, int $day, int $hour): void
+    public static function delete(int $month, int $day, int $hour): array
     {
         if(!Auth::user()){
             redirect('/login');
-            return;
+            return [
+                'status' => false,
+                'message' => 'fail'
+            ];
         }
 
         $scheduleTime = Carbon::create(2024, $month, $day, $hour, 0, 0);
@@ -49,6 +59,11 @@ class ScheduleCrudAction
         $schedule = Schedule::where('user_id', $userId)->where('schedule_time', $scheduleTime)->first();
         Mail::to(Auth::user()->email)->send(new ScheduleCanceledMail($schedule));
         $schedule->delete();
+
+        return [
+            'status' => true,
+            'message' => "Your schedule was deleted successfully. An email was sent to {$schedule->user->email} to remember you!",
+        ];
     }
 
 }

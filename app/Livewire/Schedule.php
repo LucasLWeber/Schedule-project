@@ -17,6 +17,7 @@ class Schedule extends Component
     public array $scheduleReserved;
 
 
+
     public function getScheduleHour(int $hour): int
     {
         return $this->selectedScheduleHour = $hour;
