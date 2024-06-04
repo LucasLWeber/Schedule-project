@@ -1,5 +1,5 @@
 <x-mail::message>
-    # Schedule confirmed
+    # Schedule canceled
 
     @php
         $scheduleTime = new DateTime($schedule->schedule_time);
